@@ -19,7 +19,7 @@
  
     <div class="wrapper">
         <header class="main-header">
-            <a href="<?=base_url()?>assets/index2.html" class="logo">
+            <a href="<?=base_url('dashboard')?>" class="logo">
                 <span class="logo-mini">m<b>P</b></span>
                 <span class="logo-lg">my<b>POS</b></span>
             </a>
@@ -113,7 +113,7 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
-                        <a href=""><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+                        <a href="<?=site_url('dashboard')?>" ><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                     </li>
                     <li>
                         <a href=""><i class="fa fa-truck"></i> <span>Suppliers</span></a>
@@ -157,7 +157,7 @@
                     </li>
                     <?php if($this->session->userdata('level') == 1) { ?>
                         <li class="header">SETTINGS</li>
-                        <li><a href="#"><i class="fa fa-user"></i> <span>Users</span></a></li>
+                        <li><a href="<?php echo site_url('user') ?>"><i class="fa fa-user"></i> <span>Users</span></a></li>
                     <?php } ?>
                 </ul>
             </section>
