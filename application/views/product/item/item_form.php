@@ -23,7 +23,7 @@
         <div class="box-body ">
            <div class="row">
             <div class="col-md-4 col-md-offset-4 ">
-                <form action="<?=site_url('item/process') ?>" method="post">
+                <form action="<?=site_url('item/process') ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Barcode </label>
                         <input type="hidden" name="item_id" value="<?= $row->item_id ?>">
@@ -49,6 +49,10 @@
                     <div class="form-group">
                         <label>Unit </label>
                         <?php echo form_dropdown('unit', $unit, $selectedUnit, ['class' => 'form-control','required' => 'required']); ?>
+                    </div>
+                    <div class="form-group">
+                        <label>Image </label>
+                        <input type="file" name="image"  class="form-control" >
                     </div>
                    
                     <div class="form-group"></div>

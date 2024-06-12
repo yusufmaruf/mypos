@@ -11,6 +11,7 @@ class Item_m extends CI_Model {
         if($id != null) {
             $this->db->where('item_id', $id);
         }
+        $this->db->order_by('barcode', 'asc');
         $query = $this->db->get();
         return $query;
     }
@@ -22,6 +23,7 @@ class Item_m extends CI_Model {
             'price' => $post['price'],
             'category_id' => $post['category_id'],
             'unit_id' => $post['unit'],
+            'image' => $post['image'],
         ];
         $this->db->insert('p_item', $params);
     }
