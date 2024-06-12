@@ -37,14 +37,17 @@
                             <td><?php echo $data->username ?></td>
                             <td><?php echo $data->name ?></td>
                             <td><?php echo $data->address ?></td>
-                            <td><?php echo $data->level == 1 ? 'Admin' : 'User' ?></td>
+                            <td><?php echo $data->level == 1 ? 'Admin' : 'Kasir' ?></td>
                             <td width="160px" class="text-center">
                                 <a href="<?php echo site_url('user/edit/'.$data->user_id) ?>" class="btn btn-warning btn-xs">
                                     <i class="fa fa-edit"></i> Update
                                 </a>
-                                <a href="<?php echo site_url('user/del/'.$data->user_id) ?>" class="btn btn-danger btn-xs">
-                                    <i class="fa fa-trash"></i> Delete
-                                </a>
+                                <form action="<?= site_url('user/del') ?>" method="post">
+                                    <input type="hidden" name="user_id" value="<?= $data->user_id ?>">
+                                    <button onclick="return confirm('Are you sure?')" class="btn btn-danger btn-xs" >
+                                        <i class="fa fa-trash"></i> Delete
+                                    </button>
+                                </form>                               
                             </td>
                             
                         </tr>

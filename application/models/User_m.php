@@ -20,4 +20,20 @@ class User_m extends CI_Model {
         $query = $this->db->get();
         return $query;
     }
+
+    public function add($post){
+        $params = [
+            'name' => $post['fullname'],
+            'username' => $post['username'],
+            'password' => sha1($post['password']),
+            'address' => $post['address'] !=""? $post['address']:null,
+            'level' => $post['level']
+        ];
+        $this->db->insert('user', $params);
+    }
+    public function del($id){
+        $this->db->where('user_id', $id);
+        $this->db->delete('user');
+    }
+        
 }
