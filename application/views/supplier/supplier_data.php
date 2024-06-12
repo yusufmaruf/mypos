@@ -14,7 +14,7 @@
             <h3 class="box-title">Data Supplier</h3>
             <div class="pull-right">
                 <a href="<?=site_url('supplier/add')?>" class="btn btn-primary btn-flat">
-                    <i class="fa fa-user-plus"></i> Create
+                    <i class="fa fa-plus"></i> Create
                 </a>
             </div>
         </div>
@@ -40,8 +40,12 @@
                             <td><?php echo $data->description ?></td>
                             <td width="160px" class="text-center">
                                 <a href="<?php echo site_url('supplier/del/'.$data->supplier_id) ?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-danger btn-xs">
-                                    <i class="fa fa-edit"></i> Delete
-                                </a>                           
+                                    <i class="fa fa-trash"></i> Delete
+                                </a> 
+                                <a href="<?php echo site_url('supplier/edit/'.$data->supplier_id) ?>" class="btn btn-warning btn-xs">
+                                    <i class="fa fa-pencil"></i> Edit
+                                </a> 
+                                                          
                             </td>
                             
                         </tr>
