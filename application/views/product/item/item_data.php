@@ -30,6 +30,7 @@
                         <th>category</th>
                         <th>unit</th>
                         <th>stock</th> 
+                        <th>image</th>
                         <th>action</th>  
                     </tr>
                 </thead>
@@ -43,6 +44,11 @@
                             <td><?php echo $data->category_name ?></td>
                             <td><?php echo $data->unit_name ?></td>
                             <td><?php echo $data->stock ?></td>
+                            <td>
+                                <?php if($data->image){ ?>
+                                    <img src="<?php echo base_url('uploads/product/'.$data->image) ?>" width="64px">
+                                <?php } ?>
+                            </td>
                             <td width="160px" class="text-center">
                                 <a href="<?php echo site_url('item/del/'.$data->item_id) ?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-danger btn-xs">
                                     <i class="fa fa-trash"></i> Delete

@@ -52,6 +52,12 @@
                     </div>
                     <div class="form-group">
                         <label>Image </label>
+                        <br>
+                        <?php if($page == 'edit'){ 
+                            if($row->image != null){
+                                echo '<img src="'.base_url('uploads/product/'.$row->image).'" width="80%">';
+                            }
+                        }?>
                         <input type="file" name="image"  class="form-control" >
                     </div>
                    
