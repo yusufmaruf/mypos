@@ -119,7 +119,7 @@
                         <a href="<?=site_url('supplier')?>"><i class="fa fa-truck"></i> <span>Suppliers</span></a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="<?=site_url('customer')?>" class="">
                             <i class="fa fa-users"></i> <span>Customers</span>
                         </a>
                     </li>
@@ -129,9 +129,9 @@
                             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Categories</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Units</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Items</a></li>
+                            <li><a href="<?=site_url('category')?>"><i class="fa fa-circle-o"></i> Categories</a></li>
+                            <li><a href="<?=site_url('unit')?>"><i class="fa fa-circle-o"></i> Units</a></li>
+                            <li><a href="<?=site_url('item')?>"><i class="fa fa-circle-o"></i> Items</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
