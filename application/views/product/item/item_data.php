@@ -25,7 +25,11 @@
                     <tr>
                         <th>#</th>
                         <th>barcode</th>    
-                        <th>name</th>    
+                        <th>name</th>   
+                        <th>price</th>
+                        <th>category</th>
+                        <th>unit</th>
+                        <th>stock</th> 
                         <th>action</th>  
                     </tr>
                 </thead>
@@ -35,6 +39,10 @@
                             <td><?php echo $key+1 ?></td>
                             <td><?php echo $data->barcode ?></td>
                             <td><?php echo $data->name ?></td>
+                            <td><?php echo $data->price ?></td>
+                            <td><?php echo $data->category_name ?></td>
+                            <td><?php echo $data->unit_name ?></td>
+                            <td><?php echo $data->stock ?></td>
                             <td width="160px" class="text-center">
                                 <a href="<?php echo site_url('item/del/'.$data->item_id) ?>" onclick="return confirm('Are you sure you want to delete this data?')" class="btn btn-danger btn-xs">
                                     <i class="fa fa-trash"></i> Delete

@@ -23,6 +23,7 @@ class Item extends CI_Controller {
 		$item->name = null;
         $item->price = null;
         $query_category = $this->category_m->get();
+
         $query_unit = $this->unit_m->get();
         $unit[null] = '- Pilih -';
         foreach ($query_unit->result() as $key => $data) {
@@ -40,9 +41,19 @@ class Item extends CI_Controller {
 	public function process(){
 		$post = $this->input->post(null, TRUE);
 		if(isset($_POST['add'])){
-			$this->item_m->add($post);
+            if($this->item_m->check_barcode($post['barcode'])->num_rows() > 0){
+                $this->session->set_flashdata('error', 'Barcode already exists');
+                redirect('item/add');                
+            }else{
+                $this->item_m->add($post);
+            }
 		}else if(isset($_POST['edit'])){
-			$this->item_m->edit($post);			
+            if($this->item_m->check_barcode($post['barcode'], $post['item_id'])->num_rows() > 0){
+                $this->session->set_flashdata('error', 'Barcode already exists');
+                redirect('item/edit/'.$post['item_id']);                
+            }else{
+                $this->item_m->edit($post);
+            }
 		}
 
 		if($this->db->affected_rows() > 0){
@@ -56,11 +67,21 @@ class Item extends CI_Controller {
 		$query = $this->item_m->get($id);
 		if($query->num_rows() > 0){
 			$item = $query->row();
-			$data = array(
-				'page' => 'edit',
-				'row' => $item
-			);
-			$this->template->load('template', 'product/item/item_form', $data);
+			$query_category = $this->category_m->get();
+            $query_unit = $this->unit_m->get();
+            $unit[null] = '- Pilih -';
+            foreach ($query_unit->result() as $key => $data) {
+                $unit[$data->unit_id] = $data->name;
+            }
+            
+            $data = array(
+                'page' => 'edit',
+                'row' => $item,
+                'category' => $query_category,
+                'unit' => $unit, 'selectedUnit' => $item->unit_id
+            );
+		    $this->template->load('template', 'product/item/item_form', $data);
+
 		}else{
 			$this->session->set_flashdata('error', 'Data not found');
 			redirect('item');

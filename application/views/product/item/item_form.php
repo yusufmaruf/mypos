@@ -9,6 +9,7 @@
 </section>
 
 <section class="content">
+    <?php $this->view('messages') ?>
     <div class="box">
         <div class="box-header">
             <h3 class="box-title"><?= ucfirst($page) ?> Item</h3>
@@ -41,7 +42,7 @@
                         <select name="category_id" id="" class="form-control">
                             <option value="">- Pilih -</option>
                             <?php foreach ($category->result() as $key => $data) { ?>
-                                <option value="<?= $data->category_id ?>"><?= $data->name ?></option>
+                                <option value="<?= $data->category_id ?>" <?php if($page == 'edit'){ if($data->category_id == $row->category_id){echo 'selected';}} ?>><?= $data->name ?></option>
                             <?php } ?>
                         </select>
                     </div>
