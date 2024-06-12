@@ -1,14 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>myPOS - by YukCoding</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/skins/_all-skins.min.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Data Tables</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="<?=BASE_URL()?>ASSETS/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?=BASE_URL()?>ASSETS/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="<?=BASE_URL()?>ASSETS/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?=BASE_URL()?>ASSETS/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?=BASE_URL()?>ASSETS/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="<?=BASE_URL()?>ASSETS/dist/css/skins/_all-skins.min.css">
+
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -112,26 +123,26 @@
                 <!-- sidebar menu -->
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
-                    <li>
+                    <li <?= $this->uri->segment(1) == 'dashboard' ? 'class="active"' : '' ?>>
                         <a href="<?=site_url('dashboard')?>" ><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
                     </li>
-                    <li>
+                    <li <?= $this->uri->segment(1) == 'supplier' ? 'class="active"' : '' ?>>
                         <a href="<?=site_url('supplier')?>"><i class="fa fa-truck"></i> <span>Suppliers</span></a>
                     </li>
-                    <li>
+                    <li <?= $this->uri->segment(1) == 'customer' ? 'class="active"' : '' ?>>
                         <a href="<?=site_url('customer')?>" class="">
                             <i class="fa fa-users"></i> <span>Customers</span>
                         </a>
                     </li>
-                    <li class="treeview">
+                    <li class="treeview <?= $this->uri->segment(1) == 'category' || $this->uri->segment(1) == 'unit' || $this->uri->segment(1) == 'item' ? 'active' : '' ?>" >
                         <a href="#">
                             <i class="fa fa-archive"></i> <span>Products</span>
                             <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="<?=site_url('category')?>"><i class="fa fa-circle-o"></i> Categories</a></li>
-                            <li><a href="<?=site_url('unit')?>"><i class="fa fa-circle-o"></i> Units</a></li>
-                            <li><a href="<?=site_url('item')?>"><i class="fa fa-circle-o"></i> Items</a></li>
+                            <li <?= $this->uri->segment(1) == 'category' ? 'class="active"' : '' ?> ><a href="<?=site_url('category')?>"><i class="fa fa-circle-o"></i> Categories</a></li>
+                            <li <?= $this->uri->segment(1) == 'unit' ? 'class="active"' : '' ?>><a href="<?=site_url('unit')?>"><i class="fa fa-circle-o"></i> Units</a></li>
+                            <li <?= $this->uri->segment(1) == 'item' ? 'class="active"' : '' ?>><a href="<?=site_url('item')?>"><i class="fa fa-circle-o"></i> Items</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -181,6 +192,13 @@
     <script src="<?=base_url()?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
     <script src="<?=base_url()?>assets/dist/js/adminlte.min.js"></script>
- 
+    <script src="<?=base_url()?>assets/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script>
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable()
+    })
+    </script>
 </body>
 </html>
